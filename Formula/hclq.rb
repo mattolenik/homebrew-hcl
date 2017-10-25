@@ -1,7 +1,7 @@
 class Hclq < Formula
   desc 'Small tool for querying and modifying HCL files, similar to jq'
   homepage 'https://github.com/mattolenik/hclq'
-  url 'https://github.com/mattolenik/hclq', :tag => '0.1.1'
+  url 'https://github.com/mattolenik/hclq.git', :tag => '0.1.1'
 
   depends_on 'go' => :build
 
