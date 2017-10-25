@@ -7,14 +7,14 @@ class Hclq < Formula
   depends_on 'dep'
 
   def install
-    src = buildpath/'src/github.com/mattolenik'
+    gopath = buildpath/'go'
+    src = gopath/'src/github.com/mattolenik'
     mkdir_p src
     ln_sf buildpath, src/'hclq'
 
-    ENV['GOPATH'] = buildpath
-    Dir.chdir(src/'hclq')
-    system 'make', 'brew'
-    bin.install 'dist/hclq'
+    ENV['GOPATH'] = gopath
+    system 'sh', '-c', "cd #{src/'hclq'} && make brew"
+    bin.install src/'hclq/dist/hclq'
   end
 
   test do
