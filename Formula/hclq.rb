@@ -3,7 +3,8 @@ class Hclq < Formula
   homepage 'https://github.com/mattolenik/hclq'
   url 'https://github.com/mattolenik/hclq.git', :tag => '0.1.1'
 
-  depends_on 'go' => :build
+  depends_on 'go'
+  depends_on 'dep'
 
   def install
     system 'make', 'brew'
