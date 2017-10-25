@@ -12,7 +12,7 @@ class Hclq < Formula
     ln_sf buildpath, buildpath/src/"hclq"
 
     ENV['GOPATH'] = buildpath
-    Dir.chdir(src)
+    Dir.chdir(buildpath/src)
     system 'make', 'brew'
     bin.install 'dist/hclq'
   end
