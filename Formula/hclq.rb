@@ -3,8 +3,7 @@ class Hclq < Formula
   homepage 'https://github.com/mattolenik/hclq'
   url 'https://github.com/mattolenik/hclq.git', :tag => '0.1.1'
 
-  depends_on 'go'
-  depends_on 'dep'
+  depends_on 'go' => :build
 
   def install
     gopath = buildpath/'go'
@@ -13,8 +12,10 @@ class Hclq < Formula
     ln_sf buildpath, src/'hclq'
 
     ENV['GOPATH'] = gopath
-    system 'sh', '-c', "cd #{src/'hclq'} && make brew"
-    bin.install src/'hclq/dist/hclq'
+    Dir.chdir(src/'hclq') {
+      system 'make', 'brew'
+      bin.install 'dist/hclq'
+    }
   end
 
   test do
